@@ -1,10 +1,11 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import StatisticsViewSet
+from .views import StatisticsViewSet, CategoryViewSet
 
 router = DefaultRouter()
-router.register(r'statistics', StatisticsViewSet)
 
-urlpatterns = [
-    path('statistics', include(router.urls)),
-]
+router.register('statistics', StatisticsViewSet, basename='statistics')
+router.register('category', CategoryViewSet, basename='category')
+
+urlpatterns = router.urls
+

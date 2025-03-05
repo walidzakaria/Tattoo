@@ -13,3 +13,15 @@ class Statistics(models.Model):
     class Meta:
         verbose_name = 'Statistics'
         verbose_name_plural = 'Statistics'
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='category/', null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
