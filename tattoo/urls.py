@@ -31,3 +31,11 @@ urlpatterns = [
     path('explorer/', include('explorer.urls')),
     path('api/', include('operation.urls'), name='api'),
 ]
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+admin.site.site_header = 'Tattoo Admin'
+admin.site.site_title = 'Tattoo Admin'
+admin.site.index_title = 'Welcome to Tattoo'
