@@ -1,0 +1,139 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tattoo</title>
+
+    <style>
+      body {
+        font-family: "Darker Grotesque", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 16px;
+        color: #151515;
+        background-color: #ffffff;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      th, td {
+        padding: 4px 8px;
+        text-align: left;
+      }
+
+      footer {
+        background: #000;
+        color: #fff;
+        text-align: center !important;
+        width: 100%;
+      }
+
+      .container {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .row-20 {
+        margin-bottom: -20px;
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+      }
+
+      a, a:focus, a:active {
+        color: black;
+      }
+      a, a:focus, a:active, a:hover {
+        text-decoration: none;
+      }
+      
+      a {
+        background-color: transparent;
+        color: white;
+        transition: all 0.3sease-in-out;
+      }
+
+      @media (min-width: 768px) {
+        .text-md-left {
+            text-align: left !important;
+        }
+      }
+      @media (min-width: 768px) {
+        .col-md-3 {
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .align-items-lg-center {
+          align-items: center !important;
+        }
+      }
+      @media (min-width: 768px) {
+        footer {
+          padding: 50px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    
+    <p>{% trans "Dear" %} {{ user }},</p>
+
+    <p>{% trans "We have received your appointment request. Below are the details:" %}</p>
+
+    <table>
+      <tr>
+        <td>{% trans "User" %}</td>
+        <td>{{ user }}</td>
+      </tr>
+      <tr>
+        <td>{% trans "Date" %}</td>
+        <td>{{ date }}</td>
+      </tr>
+      <tr>
+        <td>{% trans "Time" %}</td>
+        <td>{{ time }}</td>
+      </tr>
+      <tr>
+        <td>{% trans "Tattoo artist" %}</td>
+        <td>{{ tattoo_artist }}</td>
+      </tr>
+      <tr>
+        <td>{% trans "Design" %}</td>
+        <td>{{ design }}</td>
+      </tr>
+      <tr>
+        <td>{% trans "Size" %}</td>
+        <td>{{ size }}</td>
+      </tr>
+      <tr>
+        <td>{% trans "Price" %}</td>
+        <td>{{ price }}</td>
+      </tr>
+    </table>
+
+    <p>{% trans "Please don't reply to this email." %}</p>
+
+    <p>{% trans "Best regards," %}</p>
+    <p>{% trans "The Tattoo Team" %}</p>
+
+    <footer class="section-xs text-center">
+      <div class="container">
+        <div class="row-20 align-items-lg-center">
+          <div class="col-md-3 text-md-left">
+            <div class="footer-brand"><a href="index.html">LOGO here</a></div>
+          </div>
+          <div class="col-md-6">
+            <p class="rights"><span>©&nbsp;</span><span class="copyright-year">2025</span><span>&nbsp;</span><span>All Rights Reserved</span><span>&nbsp;</span></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

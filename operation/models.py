@@ -25,3 +25,21 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
+        
+    def delete_old_image(self):
+        if self.pk:
+            try:
+                old_image = Category.objects.get(pk=self.pk).image
+                if old_image and old_image != self.image:
+                    old_image.delete(save=False)
+                    
+            except Category.DoesNotExist:
+                pass
+    
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        self.delete_old_image()
+        return super().save(force_insert, force_update, using, update_fields)
+    
+    def delete(self, using=None, keep_parents=False):
+        self.image.delete(save=False)
+        return super().delete(using, keep_parents)

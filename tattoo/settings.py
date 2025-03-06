@@ -208,6 +208,17 @@ CORS_ALLOWED_ORIGINS = [
     'https://www.hanitattohurghada.com',
 ]
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config.get('Email', 'EMAIL_HOST')
+EMAIL_HOST_USER = config.get('Email', 'EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config.get('Email', 'EMAIL_HOST_PASSWORD')
+EMAIL_PORT = config.get('Email', 'EMAIL_PORT')
+# EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+DEFAULT_FROM_EMAIL = config.get('Email', 'EMAIL_HOST_USER')
+EMAIL_USE_SSL = True
+
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 EXPLORER_CONNECTIONS = { 'Default': 'default' }
