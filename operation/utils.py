@@ -27,15 +27,6 @@ def send_email_with_template(subject, message, recipient_list, from_email=settin
 def send_html_email(subject, template, context, recipient_list, from_email=settings.DEFAULT_FROM_EMAIL):
     html_content = render_to_string(template, context)
     plain_content = strip_tags(html_content)
-    
-    # email = EmailMultiAlternatives(
-    #     subject=subject,
-    #     body=plain_content,
-    #     from_email=from_email,
-    #     to=recipient_list,
-    # )
-    # email.attach_alternative(html_content, "text/html")
-    # return email.send()
 
     return send_mail(
         subject=subject,

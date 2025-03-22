@@ -30,6 +30,8 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('explorer/', include('explorer.urls')),
     path('api/', include('operation.urls'), name='api'),
+    path('', include('public.urls'), name='public'),
+    re_path(r'^favicon\.ico$', RedirectView.as_view(url=staticfiles_storage.url('favicon.ico'))),
 ]
 
 

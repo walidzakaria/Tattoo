@@ -70,9 +70,11 @@ INSTALLED_APPS = [
     'explorer',
     
     'operation',
+    'public',
 ]
 
 MIDDLEWARE = [
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -159,7 +161,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Africa/Cairo'
 
@@ -172,6 +173,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Additional directories for static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Global static files
+]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
@@ -233,3 +239,16 @@ EXPLORER_SQL_BLACKLIST = (
     #  # DCL
     #  'GRANT', 'REVOKE',
  )
+
+
+LANGUAGES = [
+    ('en', 'English'),
+    ('de', 'Deutsch'),
+]
+LANGUAGE_CODE = 'en'  # اللغة الافتراضية
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),  # Path to store translation files
+]
+
+ADMIN_EMAILS = config.get('App', 'ADMIN_EMAILS').split(';')

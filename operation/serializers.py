@@ -1,14 +1,14 @@
 from rest_framework import serializers
-from .models import Statistics, Category
+from .models import Appointment, Subscription
 
 
-class StatisticsSerializer(serializers.ModelSerializer):
+class AppointmentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Statistics
+        model = Appointment
         fields = '__all__'
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class SubscriptionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Category
+        model = Subscription
         fields = '__all__'

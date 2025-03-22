@@ -1,14 +1,13 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import StatisticsViewSet, CategoryViewSet, index, confirmation
+from .views import AppointmentViewSet, SubscriptionViewSet, confirmation
 
 router = DefaultRouter()
 
-router.register('statistics', StatisticsViewSet, basename='statistics')
-router.register('category', CategoryViewSet, basename='category')
+router.register('appointments', AppointmentViewSet, basename='appointments')
+router.register('subscriptions', SubscriptionViewSet, basename='subscriptions')
 
 urlpatterns = [
-    path('', index, name='index'),
     path('confirmation/', confirmation, name='confirmation'),
 ]
 

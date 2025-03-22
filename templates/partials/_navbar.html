@@ -1,0 +1,92 @@
+{% load static %}
+
+
+
+<header class="section page-header">
+  <!-- RD Navbar-->
+   
+  <div class="rd-navbar-wrap rd-navbar-wrap-absolute">
+    <nav class="rd-navbar rd-navbar-classic" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+      <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></div>
+      <div class="rd-navbar-aside-outer rd-navbar-collapse">
+        <div class="rd-navbar-aside">
+          <div class="header-info">
+            <ul class="list-inline list-inline-md">
+              <li>
+                <div class="unit unit-spacing-xs align-items-center">
+                  <div class="unit-left">Call Us:</div>
+                  <div class="unit-body"><a href="tel:#">(073) 123-12-12</a></div>
+                </div>
+              </li>
+              <li>
+                <div class="unit unit-spacing-xs align-items-center">
+                  <div class="unit-left">Opening Hours:</div>
+                  <div class="unit-body"> Sa - Fr: 01 pm - 10 pm</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="social-block">
+            <ul class="list-inline">
+              <li><a class="icon fa-facebook" href="#"></a></li>
+              <li><a class="icon fa-twitter" href="#"></a></li>
+              <li><a class="icon fa-google-plus" href="#"></a></li>
+              <li><a class="icon fa-vimeo" href="#"></a></li>
+              <li><a class="icon fa-youtube" href="#"></a></li>
+              <li><a class="icon fa-pinterest-p" href="#"></a></li>
+              <li class="language">
+                <select id="language" name="language" data-placeholder="" data-dynamic-select>
+                  <option value="en" data-img="{% static 'images/flags/us.svg' %}">EN</option>
+                  <option value="de" data-img="{% static 'images/flags/de.svg' %}" {% if request.GET.lang == 'de' %}selected{% endif %}>DE</option>
+                </select>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="rd-navbar-main-outer">
+        <div class="rd-navbar-main">
+          <!-- RD Navbar Panel-->
+          <div class="rd-navbar-panel">
+            <!-- RD Navbar Toggle-->
+            <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+            <!-- RD Navbar Brand-->
+            <div class="rd-navbar-brand"><a class="brand" href="index.html"><img class="brand-logo-dark" src="{% static 'images/logo-hani.png' %}" alt="" width="250" height="41"/><img class="brand-logo-inverse" src="{% static 'images/logo-hani.png' %}" alt="" width="250" height="41"/></a></div>
+          </div>
+          <div class="rd-navbar-main-element">
+            <div class="rd-navbar-nav-wrap">
+              <!-- RD Navbar Nav-->
+              <ul class="rd-navbar-nav">
+                <li class="rd-nav-item active"><a class="rd-nav-link" href="index.html">Home</a>
+                </li>
+                <li class="rd-nav-item"><a class="rd-nav-link" href="#">About</a>
+                  <!-- RD Navbar Dropdown-->
+                  <ul class="rd-menu rd-navbar-dropdown">
+                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">Our Team</a></li>
+                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">Overview</a></li>
+                    <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">Testimonials</a></li>
+                  </ul>
+                </li>
+                <li class="rd-nav-item"><a class="rd-nav-link" href="services.html">Services</a>
+                </li>
+                <li class="rd-nav-item"><a class="rd-nav-link" href="Tattoo-gallery.html">Gallery</a>
+                  <!-- RD Navbar Dropdown-->
+                  
+                </li>
+                <li class="rd-nav-item"><a class="rd-nav-link" href="#">Blog</a>
+                  <!-- RD Navbar Dropdown-->
+                 
+                </li>
+               
+                <li class="rd-nav-item"><a class="rd-nav-link" href="#">Contacts</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+</header>
