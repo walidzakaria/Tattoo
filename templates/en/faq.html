@@ -50,6 +50,7 @@
                 href="#accordion1Collapse-{{faq.id}}"
                 aria-controls="accordion1Collapse-{{faq.id}}"
                 aria-expanded="{{ forloop.first|yesno:'true,false' }}"
+                class="{{ forloop.first|yesno:',collapsed' }}"
                 >{{faq.question}}?
                 <div class="card-arrow"></div
               ></a>
