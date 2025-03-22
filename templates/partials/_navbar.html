@@ -52,13 +52,13 @@
             <!-- RD Navbar Toggle-->
             <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
             <!-- RD Navbar Brand-->
-            <div class="rd-navbar-brand"><a class="brand" href="index.html"><img class="brand-logo-dark" src="{% static 'images/logo-hani.png' %}" alt="" width="250" height="41"/><img class="brand-logo-inverse" src="{% static 'images/logo-hani.png' %}" alt="" width="250" height="41"/></a></div>
+            <div class="rd-navbar-brand"><a class="brand" href="/"><img class="brand-logo-dark" src="{% static 'images/logo-hani.png' %}" alt="" width="250" height="41"/><img class="brand-logo-inverse" src="{% static 'images/logo-hani.png' %}" alt="" width="250" height="41"/></a></div>
           </div>
           <div class="rd-navbar-main-element">
             <div class="rd-navbar-nav-wrap">
               <!-- RD Navbar Nav-->
               <ul class="rd-navbar-nav">
-                <li class="rd-nav-item active"><a class="rd-nav-link" href="index.html">Home</a>
+                <li class="rd-nav-item {% if request.path == '/' %}active{% endif %}"><a class="rd-nav-link" href="/">Home</a>
                 </li>
                 <li class="rd-nav-item"><a class="rd-nav-link" href="#">About</a>
                   <!-- RD Navbar Dropdown-->
@@ -68,9 +68,9 @@
                     <li class="rd-dropdown-item"><a class="rd-dropdown-link" href="#">Testimonials</a></li>
                   </ul>
                 </li>
-                <li class="rd-nav-item"><a class="rd-nav-link" href="services.html">Services</a>
+                <li class="rd-nav-item {% if '/services' in request.path %}active{% endif %}"><a class="rd-nav-link" href="/services">Services</a>
                 </li>
-                <li class="rd-nav-item"><a class="rd-nav-link" href="Tattoo-gallery.html">Gallery</a>
+                <li class="rd-nav-item {% if '/gallery' in request.path %}active{% endif %}"><a class="rd-nav-link" href="/gallery">Gallery</a>
                   <!-- RD Navbar Dropdown-->
                   
                 </li>

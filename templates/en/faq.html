@@ -1,0 +1,108 @@
+{% extends 'base_en.html' %} {% block title %}Hani Tattoo Hurghada{% endblock %}
+{% load static %} {% block content %}
+
+<section
+  class="section-page-title context-dark"
+  style="
+    background-image: url({% static 'images/Header.jpg' %});
+    background-size: cover;
+    height: 450px;
+  "
+>
+  <div class="container">
+    <h1 class="page-title">FAQ</h1>
+  </div>
+</section>
+<section class="breadcrumbs-custom">
+  <div class="container">
+    <ul class="breadcrumbs-custom-path">
+      <li><a href="/">Home</a></li>
+      <li class="active">FAQ</li>
+    </ul>
+  </div>
+</section>
+<section class="section section-lg bg-default text-center">
+  <div class="container">
+    <h2>FAQ</h2>
+    <p class="block-lg">
+      We aim to provide the best experience of using our tattoo services. We
+      hope these frequently asked questions and their answers will help you find
+      a solution to your problem. If not, feel free to contact us anytime.
+    </p>
+  </div>
+  <div class="container">
+    <div class="block-sm">
+      <div
+        class="card-group-custom card-group-corporate card-group-gray"
+        id="accordion1"
+        role="tablist"
+        aria-multiselectable="false"
+      >
+        <!-- Bootstrap card-->
+         {% for faq in faqs %}
+        <article class="card card-custom card-corporate">
+          <div class="card-header" id="accordion1Heading-{{faq.id}}" role="tab">
+            <div class="card-title">
+              <a
+                role="button"
+                data-toggle="collapse"
+                data-parent="#accordion1"
+                href="#accordion1Collapse-{{faq.id}}"
+                aria-controls="accordion1Collapse-{{faq.id}}"
+                aria-expanded="{{ forloop.first|yesno:'true,false' }}"
+                >{{faq.question}}?
+                <div class="card-arrow"></div
+              ></a>
+            </div>
+          </div>
+          <div
+            class="collapse {% if forloop.first %}show{% endif %}"
+            id="accordion1Collapse-{{faq.id}}"
+            role="tabpanel"
+            aria-labelledby="accordion1Heading-{{faq.id}}"
+          >
+            <div class="card-body">
+              <p>
+                {{faq.answer}}
+              </p>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-md bg-primary text-center">
+  <div class="container"> 
+    <div class="row justify-content-md-center row-30 row-lg-40">
+      <div class="col-md-9 col-lg-8">
+        <h2>Subscribe to the Newsletter</h2>
+        <p class="big">Be the first to know about our promotions and discounts!</p>
+      </div>
+      <div class="col-md-9 col-lg-6">
+        <!-- RD Mailform-->
+        <form id="subscribe-form" class="rd-form rd-mailform rd-form-inline" data-form-output="form-output-global" data-form-type="subscribe" method="post">
+          <div class="form-wrap">
+            <input class="form-input" id="subscribe-form-0-email" type="email" name="email" data-constraints="@Email @Required"/>
+            <label class="form-label" for="subscribe-form-0-email">Your E-mail</label>
+          </div>
+          <div class="form-button">
+            <button class="button button-primary" type="submit">Subscribe
+              <div class="spinner-border spinner-border-md hidden" role="status" id="subscribe-spinner">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{% static 'js/form-subscribe.js' %}" ></script>
+
+
+{% endblock %}

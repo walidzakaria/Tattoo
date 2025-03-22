@@ -1,0 +1,101 @@
+{% extends 'base_en.html' %} {% block title %}Hani Tattoo Hurghada{% endblock %}
+{% load static %} {% block content %}
+
+<section
+  class="section-page-title context-dark"
+  style="
+    background-image: url({% static 'images/header.jpg' %});
+    background-size: cover;
+    height: 450px;
+  "
+>
+  <div class="container">
+    <h1 class="page-title">Tattoo Gallery</h1>
+  </div>
+</section>
+<section class="breadcrumbs-custom">
+  <div class="container">
+    <ul class="breadcrumbs-custom-path">
+      <li><a href="/">Home</a></li>
+      <li class="active">Tattoo Gallery</li>
+    </ul>
+  </div>
+</section>
+<section class="section section-lg bg-default text-center">
+  <div class="container">
+    <h2>Tattoo Gallery</h2>
+    <p class="block-lg">
+      Explore our gallery and witness the artistry, precision, and creativity
+      behind every piece we create. From stunning tattoos and intricate
+      piercings to flawless permanent makeup and expert tattoo cover-ups, our
+      work showcases dedication to quality and self-expression. Each design is a
+      reflection of personal stories, crafted with passion and skill. Browse our
+      collection and get inspired for your next masterpiece!
+    </p>
+    <div class="row row-30">
+      <!-- Isotope Filters-->
+      <div class="col-lg-12">
+        <div class="isotope-filters isotope-filters-horizontal">
+          <button
+            class="isotope-filters-toggle button button-sm button-primary"
+            data-custom-toggle="#isotope-filters"
+            data-custom-toggle-disable-on-blur="true"
+          >
+            Filter<span class="caret"></span>
+          </button>
+          <ul class="isotope-filters-list" id="isotope-filters">
+            <li>
+              <a
+                class="port-a active"
+                data-isotope-filter="*"
+                data-isotope-group="gallery"
+                href="#"
+                >All</a
+              >
+            </li>
+            {% for category in categories %}
+            <li>
+              <a
+                class="port-a"
+                data-isotope-filter="{{ category.id }}"
+                data-isotope-group="gallery"
+                href="#"
+                >{{ category.name }}</a
+              >
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <!-- Isotope Content-->
+      <div class="col-lg-12">
+        <div
+          class="isotope row"
+          data-isotope-layout="masonry"
+          data-isotope-group="gallery"
+          data-lightgallery="group"
+          data-column-class=".col-sm-6.col-lg-4"
+        >
+          {% for image in gallery %}
+          <div class="col-sm-6 col-lg-4 isotope-item" data-filter="{{ image.category.id}}">
+            <a
+              class="gallery-item"
+              data-lightgallery="item"
+              href="{{ image.image.url}}"
+              ><img
+                src="{{ image.image.url}}"
+                alt=""
+                width="570"
+                height="570" lazy /><span class="gallery-item-title"
+                >{{ image.category.name }}</span
+              ><span class="gallery-item-button"></span
+            ></a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+</section>

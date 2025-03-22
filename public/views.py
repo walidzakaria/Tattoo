@@ -5,7 +5,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils import translation
 import random
 
-from .models import Slider, FewWords, Services, ArtShowcase, Artist, Advantage, Category, Gallery, Fact
+from .models import (
+    Slider, FewWords, Services, ArtShowcase, Artist, Advantage, Category, Gallery, Fact, WhyChooseUs,
+    Faq,
+)
 from operation.utils import send_html_email
 
 # Create your views here.
@@ -21,7 +24,9 @@ def index(request):
     artists = Artist.objects.all()
     advantages = Advantage.objects.filter(language=lang).first()
     categories = Category.objects.all()
-    gallery = Gallery.objects.filter(include_in_home=True).all()
+    gallery = list(Gallery.objects.filter(include_in_home=True).all())
+    random.shuffle(gallery)
+    
     facts = Fact.objects.filter(language=lang).all()
     
     
@@ -38,6 +43,50 @@ def index(request):
         'facts': facts,
     }
     template_path = f'{lang}/index.html'
+    return render(request, template_path, context)
+
+
+def services(request):
+    
+    lang = request.GET.get('lang', 'en')  # اللغة الافتراضية الإنجليزية
+    activate(lang)
+
+    services = Services.objects.filter(language=lang)
+    why_choose_us = WhyChooseUs.objects.filter(language=lang).first()
+    
+    context = {
+        'why_choose_us': why_choose_us,
+        'services': services,
+    }
+    template_path = f'{lang}/services.html'
+    return render(request, template_path, context)
+
+
+def faq(request):
+    
+    lang = request.GET.get('lang', 'en')  # اللغة الافتراضية الإنجليزية
+    activate(lang)
+
+    faqs = Faq.objects.filter(language=lang).all()
+    
+    context = {
+        'faqs': faqs,
+    }
+    template_path = f'{lang}/faq.html'
+    return render(request, template_path, context)
+
+def gallery(request):
+    
+    lang = request.GET.get('lang', 'en')  # اللغة الافتراضية الإنجليزية
+    activate(lang)
+    categories = Category.objects.all()
+    gallery = Gallery.objects.all()
+    
+    context = {
+        'categories': categories,
+        'gallery': gallery,
+    }
+    template_path = f'{lang}/gallery.html'
     return render(request, template_path, context)
 
 

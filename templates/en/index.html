@@ -204,11 +204,12 @@
       <!-- Isotope Content-->
       <div class="col-lg-12">
         <div class="isotope row" data-isotope-layout="masonry" data-isotope-group="gallery" data-lightgallery="group" data-column-class=".col-sm-6.col-md-6.col-lg-3">
-          <div class="col-sm-6 isotope-item" data-filter="{{ gallery.first.category.id }}"><a class="gallery-item" data-lightgallery="item" href="{{ gallery.first.image.url}}"><img src="{{ gallery.first.image.url}}" lazy alt="" width="570" height="570"/><span class="gallery-item-title">{{ gallery.first.category.name }}</span><span class="gallery-item-button"></span></a>
-          </div>
           {% for image in gallery %}
           {% if not forloop.first %}
           <div class="col-sm-6 col-md-6 col-lg-3 isotope-item" data-filter="{{ image.category.id}}"><a class="gallery-item" data-lightgallery="item" href="{{ image.image.url}}"><img src="{{ image.image.url}}" alt="" lazy width="570" height="570"/><span class="gallery-item-title">{{ image.category.name }}</span><span class="gallery-item-button"></span></a>
+          </div>
+          {% else %}
+          <div class="col-sm-6 isotope-item" data-filter="{{ image.category.id }}"><a class="gallery-item" data-lightgallery="item" href="{{ image.image.url}}"><img src="{{ image.image.url}}" lazy alt="" width="570" height="570"/><span class="gallery-item-title">{{ image.category.name }}</span><span class="gallery-item-button"></span></a>
           </div>
           {% endif %}
           {% endfor%}
@@ -220,7 +221,7 @@
     </div>
   </div>
 </section>
-<section class="section section-lg bg-primary text-center">
+<section class="section section-lg bg-primary text-center" id="appointment">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-10 col-xl-9">
@@ -409,5 +410,7 @@
   </div>
 </section>
 
+<script src="{% static 'js/form-subscribe.js' %}" ></script>
+<script src="{% static 'js/form-appointment.js' %}" ></script>
 
 {% endblock %}

@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Slider, FewWords, Services, ArtShowcase, Artist, Advantage, Category, Gallery, Fact
+from .models import (
+    Slider, FewWords, Services, ArtShowcase, Artist, Advantage, Category, Gallery, Fact, WhyChooseUs,
+    Faq
+)
 
 
 @admin.register(Slider)
@@ -86,3 +89,17 @@ class FactAdmin(admin.ModelAdmin):
     list_display = ['title', 'number', 'suffix', 'language']
     list_filter = ['language']
     search_fields = ['title', ]
+
+
+@admin.register(WhyChooseUs)
+class WhyChooseUsAdmin(admin.ModelAdmin):
+    list_display = ['title', 'section_a', 'section_b', 'image_a', 'image_b', 'language']
+    list_filter = ['language']
+    search_fields = ['title', 'section_a', 'section_b', ]
+
+
+@admin.register(Faq)
+class FaqAdmin(admin.ModelAdmin):
+    list_display = ['question', 'answer', 'language']
+    list_filter = ['language']
+    search_fields = ['question', 'answer', ]

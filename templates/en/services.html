@@ -1,0 +1,155 @@
+{% extends 'base_en.html' %} {% block title %}Hani Tattoo Hurghada{% endblock %}
+{% load static %} {% block content %}
+
+<section
+  class="section-page-title context-dark"
+  style="
+    background-image: url({% static 'images/Header.jpg'%});
+    background-size: cover;
+    height: 450px;
+  "
+>
+  <div class="container">
+    <h1 class="page-title">Services</h1>
+  </div>
+</section>
+<section class="breadcrumbs-custom">
+  <div class="container">
+    <ul class="breadcrumbs-custom-path">
+      <li><a href="/">Home</a></li>
+      <li class="active">Services</li>
+    </ul>
+  </div>
+</section>
+<section class="section section-lg bg-default">
+  <div class="container">
+    <div class="row row-50 align-items-lg-center justify-content-xl-between">
+      <div class="col-lg-6">
+        <div class="block-xs">
+          <h2>{{ why_choose_us.title }}</h2>
+          <p class="big text-gray-800">
+            {{ why_choose_us.section_a }}
+          </p>
+          <p>
+            {{ why_choose_us.section_b }}
+          </p>
+          <a class="button button-primary" href="/#appointment">Book Now</a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="box-images-classic">
+          <div class="row row-30">
+            <div class="col-6">
+              <div
+                class="box-image-item"
+                data-parallax-scroll='{"y": 0, "x": -20,  "smoothness": 30 }'
+              >
+                <img src="{{ why_choose_us.image_a.url}}" alt="" width="270" height="458" />
+              </div>
+            </div>
+            <div class="col-6">
+              <div
+                class="box-image-item"
+                data-parallax-scroll='{"y": 0, "x": 20,  "smoothness": 30 }'
+              >
+                <img src="{{ why_choose_us.image_b.url}}" alt="" width="270" height="458" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section section-lg bg-gray-100 text-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-9 col-lg-7">
+        <h2>Our Services</h2>
+        <p>
+          We provide a wide variety of tattooing services to both regular and
+          new clients. At Hani Moriss, you can expect first-class treatment as
+          well as 100% safe and sterile environment & equipment.
+        </p>
+      </div>
+    </div>
+    <div class="row icon-modern-list no-gutters">
+      {% for service in services %}
+      <div class="col-sm-6 col-lg-4">
+        <article class="box-icon-modern modern-variant-2">
+          <div class="icon-modern"><img src="{{ service.image.url }}" alt="" width="80" height="80"/>
+          </div>
+          <h4 class="box-icon-modern-title"><a href="#">{{ service.title }}</a></h4>
+          <p>{{ service.description }}</p>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section class="section section-xl bg-default">
+  <div class="container">
+    <div class="row no-gutters pricing-box-modern justify-content-lg-end">
+      <div class="col-sm-6 col-lg-4">
+        <div class="pricing-box-inner box-left">
+          <h2>Schedule</h2>
+          <ul class="list-md pricing-box-inner-list">
+            <li>
+              <h4>Monday-Friday</h4>
+              <p>10am – 8pm</p>
+            </li>
+            <li>
+              <h4>Saturday</h4>
+              <p>10am – 6pm</p>
+            </li>
+            <li>
+              <h4>Sunday</h4>
+              <p>closed</p>
+            </li>
+          </ul>
+          <p>We will be glad to see you anytime at our salon.</p>
+          <a class="button-link button-link-icon" href="appointment.html"
+            >make an appointment <span class="icon fa-arrow-right"></span
+          ></a>
+        </div>
+      </div>
+      <div class="d-none d-lg-block col-lg-4 img-wrap">
+        <img
+          src="{% static 'images/home-4-6-498x688.jpg' %}"
+          alt=""
+          width="498"
+          height="688"
+        />
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <div class="pricing-box-inner bg-primary context-dark box-right">
+          <h2>Pricing</h2>
+          <ul class="list-md pricing-box-inner-list">
+            <li>
+              <h4>Tattooing</h4>
+              <p>from $30.00</p>
+            </li>
+            <li>
+              <h4>Piercing</h4>
+              <p>from $35.00</p>
+            </li>
+            <li>
+              <h4>Tattoo cover up</h4>
+              <p>from $60.00</p>
+            </li>
+            <li>
+              <h4>Tattoo design</h4>
+              <p>from $70.00</p>
+            </li>
+            <li>
+              <h4>Permanent makeup</h4>
+              <p>from $50.00</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

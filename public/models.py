@@ -1,13 +1,15 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from .mixins import ImageCleanupMixin
 
 # Create your models here.
 class LanguageChoices(models.TextChoices):
     EN = 'en', 'English'
     DE = 'de', 'Deutsch'
-class Slider(models.Model):
 
-    
+
+class Slider(models.Model, ImageCleanupMixin):
+
     title = models.CharField(max_length=100)
     slogan = models.CharField(max_length=100)
     description = models.TextField(max_length=300)
@@ -18,12 +20,11 @@ class Slider(models.Model):
     button_text = models.CharField(max_length=50, default='Read More')
     language = models.CharField(max_length=2, choices=LanguageChoices.choices, default=LanguageChoices.EN)
     
-
     def __str__(self):
         return self.title
 
 
-class FewWords(models.Model):
+class FewWords(models.Model, ImageCleanupMixin):
     title = models.CharField(max_length=100)
     section_a = models.TextField(max_length=300)
     section_b = models.TextField(max_length=300)
@@ -32,6 +33,7 @@ class FewWords(models.Model):
                               help_text='Image size: 1920x662')
     language = models.CharField(max_length=2, choices=LanguageChoices.choices, default=LanguageChoices.EN)
 
+    
     def __str__(self):
         return self.title
     
@@ -39,7 +41,7 @@ class FewWords(models.Model):
         verbose_name_plural = 'Few Words'
 
 
-class Services(models.Model):
+class Services(models.Model, ImageCleanupMixin):
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=300)
     image = models.ImageField(upload_to='services/',
@@ -66,7 +68,7 @@ class ArtShowcase(models.Model):
         verbose_name_plural = 'Art Showcase'
 
 
-class Artist(models.Model):
+class Artist(models.Model, ImageCleanupMixin):
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='artists/',
                               validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'webp'])],
@@ -76,7 +78,10 @@ class Artist(models.Model):
         return self.name
 
 
-class Advantage(models.Model):
+class Advantage(models.Model, ImageCleanupMixin):
+    
+    image_field_names = ['image_a', 'image_b', 'image_c']
+    
     title = models.TextField(max_length=300)
     section_a = models.TextField(max_length=500)
     section_b = models.TextField(max_length=500)
@@ -107,7 +112,7 @@ class Category(models.Model):
         verbose_name_plural = 'Categories'
 
 
-class Gallery(models.Model):
+class Gallery(models.Model, ImageCleanupMixin):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='galleries')
     image = models.ImageField(upload_to='gallery/',
                               validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'webp'])])
@@ -129,3 +134,38 @@ class Fact(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class WhyChooseUs(models.Model, ImageCleanupMixin):
+    
+    image_field_names = ['image_a', 'image_b']
+    
+    title = models.CharField(max_length=200)
+    section_a = models.TextField(max_length=300)
+    section_b = models.TextField(max_length=300)
+    image_a = models.ImageField(upload_to='why_choose_us/',
+                              validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'webp'])],
+                              help_text='Image size: 1920x1280')
+    image_b = models.ImageField(upload_to='why_choose_us/',
+                              validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'webp'])],
+                              help_text='Image size: 1920x1280')
+    language = models.CharField(max_length=2, choices=LanguageChoices.choices, default=LanguageChoices.EN)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Why Choose Us'
+
+
+class Faq(models.Model):
+    question = models.CharField(max_length=250)
+    answer = models.TextField(max_length=500)
+    language = models.CharField(max_length=2, choices=LanguageChoices.choices, default=LanguageChoices.EN)
+
+    def __str__(self):
+        return self.question
+
+    class Meta:
+        verbose_name = 'FAQ'
+        verbose_name_plural = 'FAQs'
