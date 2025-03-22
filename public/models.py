@@ -27,7 +27,7 @@ class Slider(models.Model, ImageCleanupMixin):
 class FewWords(models.Model, ImageCleanupMixin):
     title = models.CharField(max_length=100)
     section_a = models.TextField(max_length=300)
-    section_b = models.TextField(max_length=300)
+    section_b = models.TextField(max_length=600)
     image = models.ImageField(upload_to='few_words/',
                               validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'webp'])],
                               help_text='Image size: 1920x662')
