@@ -7,7 +7,7 @@ import random
 
 from .models import (
     Slider, FewWords, Services, ArtShowcase, Artist, Advantage, Category, Gallery, Fact, WhyChooseUs,
-    Faq,
+    Faq, HeaderImage
 )
 from operation.utils import send_html_email
 
@@ -51,10 +51,12 @@ def services(request):
     lang = request.GET.get('lang', 'en')  # اللغة الافتراضية الإنجليزية
     activate(lang)
 
+    header_image = HeaderImage.objects.first()
     services = Services.objects.filter(language=lang)
     why_choose_us = WhyChooseUs.objects.filter(language=lang).first()
     
     context = {
+        'header_image': header_image,
         'why_choose_us': why_choose_us,
         'services': services,
     }
@@ -68,9 +70,10 @@ def faq(request):
     activate(lang)
 
     faqs = Faq.objects.filter(language=lang).all()
-    
+    header_image = HeaderImage.objects.first()
     context = {
         'faqs': faqs,
+        'header_image': header_image,
     }
     template_path = f'{lang}/faq.html'
     return render(request, template_path, context)
@@ -79,10 +82,12 @@ def gallery(request):
     
     lang = request.GET.get('lang', 'en')  # اللغة الافتراضية الإنجليزية
     activate(lang)
+    header_image = HeaderImage.objects.first()
     categories = Category.objects.all()
     gallery = Gallery.objects.all()
     
     context = {
+        'header_image': header_image,
         'categories': categories,
         'gallery': gallery,
     }

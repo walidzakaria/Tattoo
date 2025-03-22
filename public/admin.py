@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (
     Slider, FewWords, Services, ArtShowcase, Artist, Advantage, Category, Gallery, Fact, WhyChooseUs,
-    Faq
+    Faq, HeaderImage
 )
 
 
@@ -103,3 +103,8 @@ class FaqAdmin(admin.ModelAdmin):
     list_display = ['question', 'answer', 'language']
     list_filter = ['language']
     search_fields = ['question', 'answer', ]
+
+
+@admin.register(HeaderImage)
+class HeaderImageAdmin(admin.ModelAdmin):
+    list_display = ['image', ]

@@ -169,3 +169,12 @@ class Faq(models.Model):
     class Meta:
         verbose_name = 'FAQ'
         verbose_name_plural = 'FAQs'
+
+
+class HeaderImage(models.Model, ImageCleanupMixin):
+    image = models.ImageField(upload_to='header_images/',
+                              validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'webp'])],
+                              help_text='Image size: 1200x412')
+
+    def __str__(self):
+        return 'Header Image'
