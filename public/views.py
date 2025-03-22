@@ -84,7 +84,8 @@ def gallery(request):
     activate(lang)
     header_image = HeaderImage.objects.first()
     categories = Category.objects.all()
-    gallery = Gallery.objects.all()
+    gallery = list(Gallery.objects.all())
+    random.shuffle(gallery)
     
     context = {
         'header_image': header_image,
